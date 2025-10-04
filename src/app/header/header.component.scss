@@ -1,0 +1,126 @@
+// 🌈 Variables
+$primary-color: #0d6efd;
+$secondary-color: #f8f9fa;
+$text-color: #333;
+$font-family: 'Poppins', sans-serif;
+
+// 🧩 Mixins
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// 🧱 Header Styling
+.ekart--header {
+  background: $secondary-color;
+  border-bottom: 1px solid lighten($text-color, 60%);
+  font-family: $font-family;
+
+  .ekart--logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: $primary-color;
+    padding: 1rem 2rem;
+  }
+
+  .ekart--header--nav {
+    @include flex-between;
+    flex-direction: column;
+
+    .ekart--top--bar {
+      background: darken($secondary-color, 5%);
+      width: 100%;
+      padding: 0.5rem 2rem;
+      text-align: right;
+
+      a {
+        color: $text-color;
+        margin-left: 1rem;
+        font-size: 0.9rem;
+        text-decoration: none;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+
+    .ekart--bottom--bar {
+      @include flex-between;
+      width: 100%;
+      padding: 0.8rem 2rem;
+      background: white;
+      border-top: 1px solid lighten($text-color, 60%);
+
+      .ekart-menu {
+        a {
+          margin-right: 1.5rem;
+          color: $text-color;
+          font-weight: 500;
+          text-decoration: none;
+          position: relative;
+
+          &:hover {
+            color: $primary-color;
+          }
+
+          &:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background: $primary-color;
+            transition: width 0.3s ease;
+          }
+
+          &:hover:after {
+            width: 100%;
+          }
+        }
+      }
+
+      .ekart--search-bar {
+        @include flex-center;
+
+        .ekart--search-box {
+          padding: 0.5rem 1rem;
+          border: 1px solid lighten($text-color, 50%);
+          border-radius: 4px 0 0 4px;
+          outline: none;
+          width: 200px;
+
+          &:focus {
+            border-color: $primary-color;
+          }
+        }
+
+        .ekart--search--btn {
+          background: $primary-color;
+          color: white;
+          border: none;
+          padding: 0.5rem 1rem;
+          border-radius: 0 4px 4px 0;
+          cursor: pointer;
+
+          &:hover {
+            background: darken($primary-color, 10%);
+          }
+
+          i {
+            font-style: normal;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
