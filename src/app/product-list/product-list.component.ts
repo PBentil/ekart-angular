@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { console } from 'node:inspector';
 
 @Component({
   selector: 'product-list',
@@ -7,7 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './product-list.component.scss'
 })
 export class ProductListComponent {
-  name:string = "John Doe";
+  // name = "John Doe";
+  addToCart: number = 0;
   product = {
     name: "iphone 14",
     price: 999,
@@ -18,6 +20,22 @@ export class ProductListComponent {
 
   get discountedPrice(): number {
     return this.product.price -201;
+  }
+
+  // onNameChange(event : any) {
+  //   console.log(event.target.value);
+  // }
+
+  increaseQuantity(): void {
+    if (this.addToCart < this.product.instock) {
+      this.addToCart++;
+    }
+  }
+
+  decreaseQuantity(): void {
+    if (this.addToCart > 0) {
+      this.addToCart--;
+    }
   }
 
 }
