@@ -1,12 +1,15 @@
-<!-- property binding -->
- <img [src]="product.pImage" />
-<!-- string intepolation -->
-<p>Name: {{product.name}}</p>
-<p>Price: ${{product.price}}</p>
-<p>Color: {{product.color}}</p>
-<p>Discounted Price: ${{discountedPrice}}</p>
-<p>Instock: {{product.instock > 0? 'Only '+ product.instock + ' Items left': 'Not in Stock'}}</p>
-<!-- property binding -->
-<button [disabled]="!(product.instock > 0)">Buy Now</button><br><br>
-<input type="text" [value]="name" [attr.aria-hidden]="">
-<!-- disabled, hidden, checked -->
+<div class="ekart-- product--container">
+    <img [src]="product.pImage" />
+    <p>Name: {{product.name}}</p>
+    <p>Price: ${{product.price}}</p>
+    <p>Color: {{product.color}}</p>
+    <p>Discounted Price: ${{discountedPrice}}</p>
+    <p>Instock: {{product.instock > 0 ? 'Only ' + product.instock + ' Items left' : 'Not in Stock'}}</p>
+
+    <!-- Quantity controls -->
+    <div class="quantity-controls">
+        <button (click)="decreaseQuantity()">-</button>
+        <span>{{ addToCart }}</span>
+        <button (click)="increaseQuantity()">+</button>
+    </div>
+</div>
